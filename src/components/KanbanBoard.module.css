@@ -1,0 +1,21 @@
+div.board {
+  height: 90vh;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background-color: #f4f1f1;
+  display: flex;
+}
+
+@media (min-width: 1024px) {
+  .board {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    flex-direction: row;
+    gap: 1.8rem;
+  }
+}
+@media (max-width: 1024px) {
+  .board {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,55 @@
+/* Ticket status icons */
+.ticket-status-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: color 0.2s ease;
+}
+
+.ticket-status-icon.urgent {
+  color: #ff8c00; /* orange-500 */
+}
+
+.ticket-status-icon.circle {
+  color: #d1d5db; /* gray-300 */
+}
+
+.ticket-status-icon.spinner {
+  color: #f59e0b; /* yellow-700 */
+}
+
+.ticket-status-icon.check {
+  color: #4f46e5; /* indigo-500 */
+  fill: white;
+}
+
+.ticket-status-icon.cancel {
+  color: #9ca3af; /* gray-400 */
+  fill: white;
+}
+
+/* Ticket priority icons */
+.ticket-priority-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: color 0.2s ease;
+}
+
+.ticket-priority-icon.dash {
+  color: #d1d5db; /* gray-300 */
+}
+
+.ticket-priority-icon.low {
+  color: #d1d5db; /* gray-300 */
+}
+
+.ticket-priority-icon.medium {
+  color: #d1d5db; /* gray-300 */
+}
+
+.ticket-priority-icon.high {
+  color: #d1d5db; /* gray-300 */
+}
+
+.ticket-priority-icon.urgent {
+  color: #ff8c00; /* orange-500 */
+}
