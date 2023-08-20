@@ -4,6 +4,7 @@ import StatusTicket from '../tickets/StatusTicket';
 import { Icons } from '../utils/Icons';
 import { TicketStatusValues } from '../utils/TicketIcons';
 import styles from './StatusColumn.module.css';
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 
 interface StatusColumnProps {
   status: Status;
@@ -20,7 +21,7 @@ const StatusColumn: React.FC<StatusColumnProps> = ({ status, order }) => {
       return a.title.localeCompare(b.title);
     }
   });
-
+  const [parent] = useAutoAnimate();
   return (
     <div key={status} className={styles['status-column']}>
       {/* Column header */}
@@ -42,7 +43,7 @@ const StatusColumn: React.FC<StatusColumnProps> = ({ status, order }) => {
         </div>
       </div>
       {/* Tickets */}
-      <div className={styles['tickets']}>
+      <div className={styles['tickets']} ref={parent}>
         {sortedTickets
           .filter((ticket) => ticket.status === status)
           .map((ticket, idx) => (

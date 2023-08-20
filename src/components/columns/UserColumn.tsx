@@ -5,6 +5,7 @@ import { User } from '../../types/index';
 import UserTicket from '../tickets/UserTicket';
 import { Icons } from '../utils/Icons';
 import styles from './UserColumn.module.css';
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 
 interface UserColumnProps {
   user: User;
@@ -21,6 +22,8 @@ const UserColumn: React.FC<UserColumnProps> = ({ user, order }) => {
       return a.title.localeCompare(b.title);
     }
   });
+
+  const [parent] = useAutoAnimate();
 
   return (
     <div className={`${styles['user-column']} lg:w-[20%] `}>
@@ -56,7 +59,7 @@ const UserColumn: React.FC<UserColumnProps> = ({ user, order }) => {
         </div>
       </div>
       {/* Tickets */}
-      <div className={styles.tickets}>
+      <div className={styles.tickets} ref={parent}>
         {sortedTickets
           .filter((ticket) => ticket.userId === user.id)
           .map((ticket, idx) => (

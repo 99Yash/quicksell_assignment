@@ -5,6 +5,7 @@ import PriorityTicket from '../tickets/PriorityTicket';
 import { Icons } from '../utils/Icons';
 import { TicketPriorityValues } from '../utils/TicketIcons';
 import styles from './PriorityColumn.module.css';
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 
 interface PriorityColumnProps {
   priority: Priority;
@@ -24,6 +25,7 @@ const PriorityColumn: React.FC<PriorityColumnProps> = ({ priority, order }) => {
       return a.title.localeCompare(b.title);
     }
   });
+  const [parent] = useAutoAnimate();
 
   return (
     <div className={styles['priority-column']}>
@@ -46,7 +48,7 @@ const PriorityColumn: React.FC<PriorityColumnProps> = ({ priority, order }) => {
         </div>
       </div>
       {/* Tickets */}
-      <div className={styles['tickets']}>
+      <div className={styles['tickets']} ref={parent}>
         {sortedTickets
           .filter((ticket) => ticket.priority === priority)
           .map((ticket, idx) => (
