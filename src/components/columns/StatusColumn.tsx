@@ -4,6 +4,7 @@ import { Icons } from '../utils/Icons';
 import { TicketPriorityValues, TicketStatusValues } from '../utils/TicketIcons';
 import styles from './StatusColumn.module.css';
 import { useAppSelector } from '../../hooks/redux';
+import StatusTicket from '../tickets/StatusTicket';
 
 interface StatusColumnProps {
   status: Status;
@@ -47,53 +48,7 @@ const StatusColumn: React.FC<StatusColumnProps> = ({ status, order }) => {
         {sortedTickets
           .filter((ticket) => ticket.status === status)
           .map((ticket, idx) => (
-            <div key={idx} className={styles['ticket-card']}>
-              <div className={styles['ticket-card-content']}>
-                <div className={styles['ticket-card-top']}>
-                  <p className={styles['ticket-card-id']}>{ticket.id}</p>
-                  <div
-                    style={{
-                      position: 'relative',
-                    }}
-                  >
-                    <Avatar
-                      size={21}
-                      variant={`beam`}
-                      name={
-                        users.find((user) => user.id === ticket.userId)?.name ??
-                        ''
-                      }
-                    />
-                    <div
-                      className={
-                        users.find((user) => user.id === ticket.userId)
-                          ?.available
-                          ? styles['badge--online']
-                          : styles['badge--offline']
-                      }
-                    ></div>
-                  </div>
-                </div>
-                <div className={styles['ticket-card-details']}>
-                  <div className={styles['ticket-card-details-top']}>
-                    <h6 className={`${styles['ticket-card-title']}`}>
-                      {ticket.title.length > 56
-                        ? ticket.title.slice(0, 56) + '...'
-                        : ticket.title}
-                    </h6>
-                  </div>
-                  <div className={styles['ticket-card-details-bottom']}>
-                    <div className={styles['ticket-card-priority-icon']}>
-                      {TicketPriorityValues[ticket.priority as Priority]}
-                    </div>
-                    <button className={styles['ticket-card-type']}>
-                      <div className={styles['ticket-card-type-icon']}></div>
-                      Feature Request
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <StatusTicket id={ticket.id} key={ticket.id} />
           ))}
       </div>
     </div>

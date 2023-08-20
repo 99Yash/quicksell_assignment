@@ -5,3 +5,5 @@ export type User = {
   name: string;
   available: boolean;
 };
+export type GroupByOption = 'Status' | 'User' | 'Priority';
+export type OrderByOption = 'Title' | 'Priority';

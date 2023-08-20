@@ -12,14 +12,12 @@ const UserAvatar = ({
     <div className="container">
       <Avatar size={21} variant={`beam`} name={name} />
       <div
-        className={`${
+        className={
           available === true
-            ? `${styles['badge--online']}`
-            : `
-          ${styles['badge-offline']}
-          `
-        }`}
-      ></div>
+            ? styles['badge--online']
+            : styles['badge--offline']
+        }
+      />
     </div>
   );
 };

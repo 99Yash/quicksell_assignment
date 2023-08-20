@@ -5,6 +5,7 @@ import { Priority, Status, User } from '../../types/index';
 import { Icons } from '../utils/Icons';
 import { TicketPriorityValues, TicketStatusValues } from '../utils/TicketIcons';
 import styles from './UserColumn.module.css';
+import UserTicket from '../tickets/UserTicket';
 
 interface UserColumnProps {
   user: User;
@@ -60,34 +61,7 @@ const UserColumn: React.FC<UserColumnProps> = ({ user, order }) => {
         {sortedTickets
           .filter((ticket) => ticket.userId === user.id)
           .map((ticket, idx) => (
-            <div key={idx} className={styles['ticket-card']}>
-              <div className={styles['ticket-card-content']}>
-                <div className={styles['ticket-card-top']}>
-                  <p className={styles['ticket-card-id']}>{ticket.id}</p>
-                </div>
-                <div className={styles['ticket-card-details']}>
-                  <div className={styles['ticket-card-details-top']}>
-                    <div className={styles['ticket-card-status']}>
-                      {TicketStatusValues[ticket.status as Status]}
-                    </div>
-                    <h6 className={`${styles['ticket-card-title']}`}>
-                      {ticket.title.length > 56
-                        ? ticket.title.slice(0, 56) + '...'
-                        : ticket.title}
-                    </h6>
-                  </div>
-                  <div className={styles['ticket-card-details-bottom']}>
-                    <div className={styles['ticket-card-priority-icon']}>
-                      {TicketPriorityValues[ticket.priority as Priority]}
-                    </div>
-                    <button className={styles['ticket-card-type']}>
-                      <div className={styles['ticket-card-type-icon']}></div>
-                      Feature Request
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <UserTicket id={ticket.id} />
           ))}
       </div>
     </div>

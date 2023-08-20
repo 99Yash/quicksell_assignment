@@ -6,13 +6,15 @@ import { fetchTickets } from './services/qs-api.service';
 import { useAppDispatch } from './hooks/redux';
 import { setUsers } from './store/users.slice';
 import { setTickets } from './store/tickets.slice';
-
-type GroupByOption = 'Status' | 'User' | 'Priority';
-type OrderByOption = 'Title' | 'Priority';
+import { GroupByOption, OrderByOption } from './types';
 
 const Home: React.FC = () => {
-  const groupByOptions: GroupByOption[] = ['Status', 'User', 'Priority'];
-  const orderByOptions: OrderByOption[] = ['Title', 'Priority'];
+  const groupByOptions = [
+    'Status',
+    'User',
+    'Priority',
+  ] satisfies GroupByOption[];
+  const orderByOptions = ['Title', 'Priority'] satisfies OrderByOption[];
 
   const [showModal, setShowModal] = useState(false);
   const [group, setGroup] = useState<GroupByOption>(() => {
