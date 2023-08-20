@@ -1,11 +1,10 @@
-import Avatar from 'boring-avatars';
 import React from 'react';
 import { useAppSelector } from '../../hooks/redux';
-import { Priority, Status } from '../../types/index';
-import { Icons } from '../utils/Icons';
-import { TicketPriorityValues, TicketStatusValues } from '../utils/TicketIcons';
-import styles from './PriorityColumn.module.css';
+import { Priority } from '../../types/index';
 import PriorityTicket from '../tickets/PriorityTicket';
+import { Icons } from '../utils/Icons';
+import { TicketPriorityValues } from '../utils/TicketIcons';
+import styles from './PriorityColumn.module.css';
 
 interface PriorityColumnProps {
   priority: Priority;
@@ -14,7 +13,6 @@ interface PriorityColumnProps {
 
 const PriorityColumn: React.FC<PriorityColumnProps> = ({ priority, order }) => {
   const tickets = useAppSelector((state) => state.tickets);
-  const users = useAppSelector((state) => state.users);
   const priorityText = ['No Priority', 'Low', 'Medium', 'High', 'Urgent'][
     priority
   ];

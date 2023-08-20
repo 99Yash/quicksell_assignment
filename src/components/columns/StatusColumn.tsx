@@ -1,10 +1,9 @@
-import Avatar from 'boring-avatars';
-import { Priority, Status } from '../../types/index';
-import { Icons } from '../utils/Icons';
-import { TicketPriorityValues, TicketStatusValues } from '../utils/TicketIcons';
-import styles from './StatusColumn.module.css';
 import { useAppSelector } from '../../hooks/redux';
+import { Status } from '../../types/index';
 import StatusTicket from '../tickets/StatusTicket';
+import { Icons } from '../utils/Icons';
+import { TicketStatusValues } from '../utils/TicketIcons';
+import styles from './StatusColumn.module.css';
 
 interface StatusColumnProps {
   status: Status;
@@ -13,7 +12,6 @@ interface StatusColumnProps {
 
 const StatusColumn: React.FC<StatusColumnProps> = ({ status, order }) => {
   const tickets = useAppSelector((state) => state.tickets);
-  const users = useAppSelector((state) => state.users);
 
   const sortedTickets = [...tickets].sort((a, b) => {
     if (order === 'Priority') {

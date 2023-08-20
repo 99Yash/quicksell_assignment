@@ -3,20 +3,16 @@ import DisplayBtn from './components/DisplayBtn';
 import KanbanBoard from './components/KanbanBoard';
 import './App.css';
 import { fetchTickets } from './services/qs-api.service';
-import { useAppDispatch } from './hooks/redux';
+import { useAppDispatch, useAppSelector } from './hooks/redux';
 import { setUsers } from './store/users.slice';
 import { setTickets } from './store/tickets.slice';
 import { GroupByOption, OrderByOption } from './types';
+import Modal from './components/utils/Modal';
+import { Icons } from './components/utils/Icons';
 
 const Home: React.FC = () => {
-  const groupByOptions = [
-    'Status',
-    'User',
-    'Priority',
-  ] satisfies GroupByOption[];
-  const orderByOptions = ['Title', 'Priority'] satisfies OrderByOption[];
-
   const [showModal, setShowModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [group, setGroup] = useState<GroupByOption>(() => {
     const grp = JSON.parse(localStorage.getItem('group') as string);
     return grp || 'Status';
@@ -28,7 +24,8 @@ const Home: React.FC = () => {
   });
 
   const dispatch = useAppDispatch();
-
+  const tickets = useAppSelector((state) => state.tickets);
+  const users = useAppSelector((state) => state.users);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -37,6 +34,8 @@ const Home: React.FC = () => {
         dispatch(setTickets(tickets));
       } catch (err) {
         console.log(err);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchData();
@@ -51,53 +50,21 @@ const Home: React.FC = () => {
     <main className="main-container antialiased">
       <DisplayBtn setShowModal={setShowModal} />
       {showModal && (
-        <div className="modal">
-          <div onClick={() => setShowModal(false)} className="overlay"></div>
-          <div className="modal-content">
-            <label htmlFor="1" className="modal-label">
-              Grouping
-            </label>
-            <select
-              value={group}
-              id="1"
-              onChange={(e) => {
-                setGroup(e.target.value as GroupByOption);
-                setShowModal(false);
-              }}
-              className="modal-select"
-            >
-              {groupByOptions.map((item, index) => (
-                <option key={index} value={item}>
-                  {item}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="modal-content">
-            <label htmlFor="2" className="modal-label">
-              Ordering
-            </label>
-            <select
-              id="2"
-              value={order}
-              onChange={(e) => {
-                setOrder(e.target.value as OrderByOption);
-                setShowModal(false);
-              }}
-              className="modal-select"
-            >
-              {orderByOptions.map((item, index) => (
-                <option key={index} value={item}>
-                  {item}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
+        <Modal
+          group={group}
+          order={order}
+          setGroup={setGroup}
+          setOrder={setOrder}
+          setShowModal={setShowModal}
+        />
       )}
-      <div>
+      {!(tickets && users) ? (
+        <div className="empty-container">
+          <Icons.spinner className="loader" />
+        </div>
+      ) : (
         <KanbanBoard order={order} groupBy={group} />
-      </div>
+      )}
     </main>
   );
 };

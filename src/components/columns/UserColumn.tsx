@@ -1,11 +1,10 @@
 import Avatar from 'boring-avatars';
 import React from 'react';
 import { useAppSelector } from '../../hooks/redux';
-import { Priority, Status, User } from '../../types/index';
-import { Icons } from '../utils/Icons';
-import { TicketPriorityValues, TicketStatusValues } from '../utils/TicketIcons';
-import styles from './UserColumn.module.css';
+import { User } from '../../types/index';
 import UserTicket from '../tickets/UserTicket';
+import { Icons } from '../utils/Icons';
+import styles from './UserColumn.module.css';
 
 interface UserColumnProps {
   user: User;
@@ -61,7 +60,7 @@ const UserColumn: React.FC<UserColumnProps> = ({ user, order }) => {
         {sortedTickets
           .filter((ticket) => ticket.userId === user.id)
           .map((ticket, idx) => (
-            <UserTicket id={ticket.id} />
+            <UserTicket key={ticket.id} id={ticket.id} />
           ))}
       </div>
     </div>

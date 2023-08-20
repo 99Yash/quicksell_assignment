@@ -101,7 +101,18 @@
 }
 
 .ticket-card-priority-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid #ece9e9;
+  padding: 2px;
   color: #999;
+  border-radius: 2px;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 .ticket-card-type-icon {

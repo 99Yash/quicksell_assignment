@@ -33,51 +33,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Modal styles */
-.modal {
-  z-index: 10;
-  position: absolute;
-  top: 3rem;
-  left: 1rem;
+.empty-container {
   display: flex;
   flex-direction: column;
-  width: 20rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  gap: 1rem;
-  border: 1px solid #ccc;
-  background-color: #f0f0f0;
-  border-radius: 0.25rem;
-}
-
-.modal-content {
-  display: flex;
-  gap: 1rem;
-  justify-content: space-between;
-}
-
-.modal-label {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #555;
+  align-items: center;
+  justify-content: center;
+  height: 98vh;
   font-family: 'Inter', sans-serif;
 }
 
-.modal-select {
-  cursor: pointer;
-  display: inline-block;
-  padding: 0.25rem 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 0.25rem;
-  background-color: #fff;
-  font-family: 'Inter', sans-serif;
-
-  transition: background-color 0.2s ease, border-color 0.2s ease;
-}
-
-.modal-select:hover {
-  background-color: #f0f0f0;
-  border-color: #999;
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
