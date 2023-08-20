@@ -50,8 +50,9 @@
 
 .column-header-buttons {
   display: flex;
-  align-self: center;
   gap: 0.5rem;
+  align-self: center;
+  height: fit-content;
 }
 
 .column-header-button {

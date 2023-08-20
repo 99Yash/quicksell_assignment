@@ -32,11 +32,12 @@
 }
 .ticket-card:hover {
   background-color: #ffffffab;
-  border-color: #a9a6a6;
+  border-color: rgba(82, 47, 224, 0.574);
   cursor: pointer;
-  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 12px 24px rgba(198, 184, 255, 0.59);
   transition: all 500ms;
 }
+
 .ticket-card-content {
   display: flex;
   flex-direction: column;

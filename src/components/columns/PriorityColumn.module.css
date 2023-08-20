@@ -46,6 +46,8 @@
 .column-header-buttons {
   display: flex;
   gap: 0.5rem;
+  align-self: center;
+  height: fit-content;
 }
 
 .column-header-button {

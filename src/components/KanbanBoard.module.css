@@ -2,7 +2,6 @@ div.board {
   height: 90vh;
   padding-left: 1rem;
   padding-right: 1rem;
-  background-color: #f4f1f1;
   display: flex;
 }
 
