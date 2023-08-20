@@ -1,7 +1,7 @@
 import {
   AiFillCheckCircle,
-  AiOutlineDash,
   AiOutlineClockCircle,
+  AiOutlineDash,
   AiOutlinePlus,
 } from 'react-icons/ai';
 import { BiCircle, BiSolidPieChartAlt } from 'react-icons/bi';
@@ -15,7 +15,6 @@ import {
   PiCellSignalMediumFill,
 } from 'react-icons/pi';
 import { TbAlertSquareFilled } from 'react-icons/tb';
-import { GiPapers } from 'react-icons/gi';
 
 export const Icons = {
   urgent: TbAlertSquareFilled,

@@ -24,12 +24,12 @@ const Home: React.FC = () => {
   });
 
   const dispatch = useAppDispatch();
-  const tickets = useAppSelector((state) => state.tickets);
-  const users = useAppSelector((state) => state.users);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const { tickets, users } = await fetchTickets();
+        console.log(tickets, users);
         dispatch(setUsers(users));
         dispatch(setTickets(tickets));
       } catch (err) {
@@ -58,9 +58,9 @@ const Home: React.FC = () => {
           setShowModal={setShowModal}
         />
       )}
-      {!(tickets && users) ? (
+      {isLoading ? (
         <div className="empty-container">
-          <Icons.spinner className="loader" />
+          <Icons.spinner className="loader animate-spin" />
         </div>
       ) : (
         <KanbanBoard order={order} groupBy={group} />
