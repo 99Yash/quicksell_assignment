@@ -9,9 +9,10 @@
 }
 
 .ticket-card:hover {
-  background-color: #ffffff;
-  border-color: #888;
+  background-color: #ffffffab;
+  border-color: #a9a6a6;
   cursor: pointer;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1);
   transition: all 500ms;
 }
 

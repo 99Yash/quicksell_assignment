@@ -12,6 +12,13 @@
   border: 1px solid #e2e8f0;
 }
 
+.ticket-card:hover {
+  background-color: #ffffffab;
+  border-color: #a9a6a6;
+  cursor: pointer;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1);
+  transition: all 500ms;
+}
 .ticket-card-content {
   display: flex;
   flex-direction: column;
