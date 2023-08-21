@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import './App.css';
 import DisplayBtn from './components/DisplayBtn';
 import KanbanBoard from './components/KanbanBoard';
-import './App.css';
-import { fetchTickets } from './services/qs-api.service';
-import { useAppDispatch, useAppSelector } from './hooks/redux';
-import { setUsers } from './store/users.slice';
-import { setTickets } from './store/tickets.slice';
-import { GroupByOption, OrderByOption } from './types';
-import Modal from './components/utils/Modal';
 import { Icons } from './components/utils/Icons';
+import Modal from './components/utils/Modal';
+import { useAppDispatch } from './hooks/redux';
+import { fetchTickets } from './services/qs-api.service';
+import { setTickets } from './store/tickets.slice';
+import { setUsers } from './store/users.slice';
+import { GroupByOption, OrderByOption } from './types';
 
 const Home: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
